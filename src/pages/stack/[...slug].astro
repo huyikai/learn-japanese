@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import MarkdownPostLayout from '@layouts/MarkdownPostLayout.astro';
+
+export async function getStaticPaths() {
+  const stacksEntries: RenderableEntry[] = await getCollection('stack');
+  return stacksEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+interface RenderableEntry {
+  render: () => Promise<{ Content: any }>;
+  data: any;
+  slug: string;
+}
+
+const { entry } = Astro.props as { entry: RenderableEntry };
+const { Content } = await entry.render();
+---
+
+<MarkdownPostLayout frontmatter={entry.data}>
+  <Content />
+</MarkdownPostLayout>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const images = document.querySelectorAll('img');
+    images.forEach((img) => {
+      img.style.width = '100%';
+      img.style.height = 'auto';
+    });
+  });
+</script>

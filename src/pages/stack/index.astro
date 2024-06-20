@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TagItem from '@components/TagItem.astro';
+import Tag from '@components/Tag.astro';
+const allStacks = await getCollection('stack');
+
+const tags = [...new Set(allStacks.map((post) => post.data.tags).flat())];
+const category = [
+  ...new Set(allStacks.map((post) => post.slug.split('/')[0]).flat())
+];
+const pageTitle = 'Technology Stack';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>record the knowledge of technology Stack</p>
+  <h2>Category</h2>
+  <Tag>
+    {
+      category.map((cate) => (
+        <TagItem
+          title={cate}
+          url={`/stack/category/${cate}`}
+        />
+      ))
+    }
+  </Tag>
+  <h2>Tags</h2>
+  <Tag>
+    {
+      tags.map((tag) => (
+        <TagItem
+          title={tag}
+          url={`/tags/${tag}`}
+        />
+      ))
+    }
+  </Tag>
+</BaseLayout>

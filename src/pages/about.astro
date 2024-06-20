@@ -1,0 +1,145 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+const pageTitle = 'About Me';
+import Imgs from '@components/Imgs.astro';
+import ski1 from '@assets/personal/ski1.jpg';
+import ski2 from '@assets/personal/ski2.jpg';
+// import ski3 from '@assets/personal/ski3.jpg';
+import marathon1 from '@assets/personal/marathon1.jpg';
+// import marathon2 from '@assets/personal/marathon2.jpg';
+
+const imgs = [marathon1, ski1, ski2];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>Hey, my name is huyikai. In chinese is 胡义凯 (hú yì kaǐ).</p>
+
+  <p>I am currently a full-time software development engineer.</p>
+
+  <h2>Skills</h2>
+
+  <Image
+    src="https://skillicons.dev/icons?i=html,css,sass,less,tailwind,js,ts,vite,vue,pinia,vitest,react,pnpm,flutter,astro,python,django,nodejs,npm,express,git,docker,nginx,md,figma,ps,ai,pr,discord,tensorflow"
+    alt="skills"
+    inferSize
+    loading="eager"
+  />
+
+  <h2>Hobbies</h2>
+  <ul>
+    <li>
+      <b>Coding</b>
+      <p>
+        coding is a creative and challenging process. I can create things I want
+        through coding, and also help others solve their problems. When ideas
+        become reality, it gives me a sense of achievement and fills me with
+        anticipation during the programming process. This is also one of the
+        reasons why I became a software engineer. In my spare time, I do some
+        open source projects. This allows me to learn a lot and help others.
+        Even received some unexpected rewards, such as prizes for the popularity
+        of my articles in forums, and awards for contributing to the astro
+        community, among others. It makes me more motivated to continue.
+      </p>
+    </li>
+    <li>
+      <b>Photography</b>
+      <p>
+        Photography is another professional skill of mine. Initially, I wanted
+        to learn photography because, after traveling, looking back at the
+        photos, I felt regret for not capturing those moments better.
+      </p>
+      <p>
+        As my photography skills improved, I went from taking photos for myself
+        to helping friends take baby photos, lifestyle vlogs, and wedding
+        records for free, and later on, I was widely recognized and invited for
+        commercial shoots. After earning back the cost of my photography
+        equipment and persisting for a while, I began to reduce the frequency of
+        accepting shooting orders. Photography work is not easy, and human
+        energy is always limited. I need to reserve enough energy for my main
+        job, and I don't want this hobby to lose its interest because it becomes
+        a job.
+      </p>
+      <p>
+        Now, photography for me is not just about recording, but also
+        expressing. I hope to capture every moment of my life through
+        photography and share it with more people.
+      </p>
+    </li>
+    <li>
+      <b>Travel</b>
+      <p>
+        Travel can let me see a different world, can let me see a different
+        person, can let me see different things can make me see different world
+        views. oh,There are also different cuisines.
+      </p>
+    </li>
+    <li>
+      <b>Sports</b>
+      <p>
+        I enjoy various sports and like to try different techniques in each,
+        enjoying the exhilarating pleasure they bring while staying healthy.
+      </p>
+      <p>
+        Basketball is one of my favorite sports. Having started playing
+        basketball from a young age, it has been the most important sport
+        accompanying my growth. Basketball has brought me a lot of joy, allowing
+        me to find fun in sports and make many friends. It has also had a
+        lasting impact on me, helping me maintain a positive attitude when
+        facing difficulties and teaching me that talent sets your ceiling but
+        effort sets your floor. Speaking of basketball, it's impossible not to
+        talk about the NBA. I admire many players like Jordan, Iverson, Kobe,
+        McGrady, Carter, James, Curry, etc. I'm not a fan of any particular
+        player; I'm just amazed by their physical fitness and skills. Of course,
+        I also admire anyone who perseveres for themselves, their family, and
+        their dreams.
+      </p>
+      <p>Besides basketball, I also enjoy running, skiing, and frisbee.</p>
+      <p>
+        I started running because of the Japanese anime "Run with the Wind
+        (風が強く吹いている)", which deeply made me fall in love with the
+        feeling of running. It motivated me to keep up with a weekly mileage of
+        20 kilometers, and now my half marathon PB is 1 hour and 50 minutes. I
+        plan to try a full marathon when my half marathon time is within 1 hour
+        and 30 minutes.
+      </p>
+      <p>
+        Skiing was something my wife and I took up together. The learning
+        process was tough, and the speed of coming down the mountain was
+        frightening. But once I mastered it, I wanted nothing but to go faster
+        and faster, of course, only on slopes that matched my ability. After
+        all, skiing is a dangerous sport, and it's necessary to maintain a sense
+        of reverence. Skiing is also an expensive sport; so far, I've only skied
+        at domestic resorts, but I hope to experience the slopes in Hokkaido and
+        Switzerland if I get the chance.
+      </p>
+      <p>
+        Frisbee was something I got into by chance. A friend, knowing I was
+        quite athletic, invited me to a frisbee match. Initially, I was just
+        curious and not very interested. But unconsciously, the game was over,
+        and I found myself deeply immersed in the sport. Frisbee is a sport with
+        a flexible amount of physical exertion, suitable for people with various
+        athletic backgrounds. However, to perform better in this sport, besides
+        explosive power and endurance, a good sense of teamwork is also
+        necessary. Because of the rules of frisbee, individual heroism is
+        impossible. I think that's also where the charm of the sport lies.
+      </p>
+    </li>
+  </ul>
+
+  <h2>Images</h2>
+  <Imgs imgs={imgs} />
+
+  <h2>Contact</h2>
+  <p>
+    If you're interested in further communication, feel free to reach out to me
+  </p>
+  <ul>
+    <li>Email: hyk_tiger@foxmail.com</li>
+    <li>Twitter: @HykTiger</li>
+    <li>Discord: hyk_tiger</li>
+    <li>WeChat: huyikai</li>
+  </ul>
+
+  <p>Hope you can find something interesting here.</p>
+</BaseLayout>

@@ -1,0 +1,230 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SyllabaryTable from '@components/SyllabaryTable.astro';
+
+const seion = [
+  [
+    { hiragana: 'あ', katakana: 'ア', roman: 'a' },
+    { hiragana: 'い', katakana: 'イ', roman: 'i' },
+    { hiragana: 'う', katakana: 'ウ', roman: 'u' },
+    { hiragana: 'え', katakana: 'エ', roman: 'e' },
+    { hiragana: 'お', katakana: 'オ', roman: 'o' }
+  ],
+  [
+    { hiragana: 'か', katakana: 'カ', roman: 'ka' },
+    { hiragana: 'き', katakana: 'キ', roman: 'ki' },
+    { hiragana: 'く', katakana: 'ク', roman: 'ku' },
+    { hiragana: 'け', katakana: 'ケ', roman: 'ke' },
+    { hiragana: 'こ', katakana: 'コ', roman: 'ko' }
+  ],
+  [
+    { hiragana: 'さ', katakana: 'サ', roman: 'sa' },
+    { hiragana: 'し', katakana: 'シ', roman: 'shi' },
+    { hiragana: 'す', katakana: 'ス', roman: 'su' },
+    { hiragana: 'せ', katakana: 'セ', roman: 'se' },
+    { hiragana: 'そ', katakana: 'ソ', roman: 'so' }
+  ],
+  [
+    { hiragana: 'た', katakana: 'タ', roman: 'ta' },
+    { hiragana: 'ち', katakana: 'チ', roman: 'chi' },
+    { hiragana: 'つ', katakana: 'ツ', roman: 'tsu' },
+    { hiragana: 'て', katakana: 'テ', roman: 'te' },
+    { hiragana: 'と', katakana: 'ト', roman: 'to' }
+  ],
+  [
+    { hiragana: 'な', katakana: 'ナ', roman: 'na' },
+    { hiragana: 'に', katakana: 'ニ', roman: 'ni' },
+    { hiragana: 'ぬ', katakana: 'ヌ', roman: 'nu' },
+    { hiragana: 'ね', katakana: 'ネ', roman: 'ne' },
+    { hiragana: 'の', katakana: 'ノ', roman: 'no' }
+  ],
+  [
+    { hiragana: 'は', katakana: 'ハ', roman: 'ha' },
+    { hiragana: 'ひ', katakana: 'ヒ', roman: 'hi' },
+    { hiragana: 'ふ', katakana: 'フ', roman: 'fu' },
+    { hiragana: 'へ', katakana: 'ヘ', roman: 'he' },
+    { hiragana: 'ほ', katakana: 'ホ', roman: 'ho' }
+  ],
+  [
+    { hiragana: 'ま', katakana: 'マ', roman: 'ma' },
+    { hiragana: 'み', katakana: 'ミ', roman: 'mi' },
+    { hiragana: 'む', katakana: 'ム', roman: 'mu' },
+    { hiragana: 'め', katakana: 'メ', roman: 'me' },
+    { hiragana: 'も', katakana: 'モ', roman: 'mo' }
+  ],
+  [
+    { hiragana: 'や', katakana: 'ヤ', roman: 'ya' },
+    null,
+    { hiragana: 'ゆ', katakana: 'ユ', roman: 'yu' },
+    null,
+    { hiragana: 'よ', katakana: 'ヨ', roman: 'yo' }
+  ],
+  [
+    { hiragana: 'ら', katakana: 'ラ', roman: 'ra' },
+    { hiragana: 'り', katakana: 'リ', roman: 'ri' },
+    { hiragana: 'る', katakana: 'ル', roman: 'ru' },
+    { hiragana: 'れ', katakana: 'レ', roman: 're' },
+    { hiragana: 'ろ', katakana: 'ロ', roman: 'ro' }
+  ],
+  [
+    { hiragana: 'わ', katakana: 'ワ', roman: 'wa' },
+    null,
+    null,
+    null,
+    { hiragana: 'を', katakana: 'ヲ', roman: 'wo' }
+  ],
+  [{ hiragana: 'ん', katakana: 'ン', roman: 'n' }]
+];
+
+const zhuoyin = [
+  [
+    { hiragana: 'が', katakana: 'ガ', roman: 'ga' },
+    { hiragana: 'ぎ', katakana: 'ギ', roman: 'gi' },
+    { hiragana: 'ぐ', katakana: 'グ', roman: 'gu' },
+    { hiragana: 'げ', katakana: 'ゲ', roman: 'ge' },
+    { hiragana: 'ご', katakana: 'ゴ', roman: 'go' }
+  ],
+  [
+    { hiragana: 'ざ', katakana: 'ザ', roman: 'za' },
+    { hiragana: 'じ', katakana: 'ジ', roman: 'ji' },
+    { hiragana: 'ず', katakana: 'ズ', roman: 'zu' },
+    { hiragana: 'ぜ', katakana: 'ゼ', roman: 'ze' },
+    { hiragana: 'ぞ', katakana: 'ゾ', roman: 'zo' }
+  ],
+  [
+    { hiragana: 'だ', katakana: 'ダ', roman: 'da' },
+    { hiragana: 'ぢ', katakana: 'ヂ', roman: 'ji' },
+    { hiragana: 'づ', katakana: 'ヅ', roman: 'zu' },
+    { hiragana: 'で', katakana: 'デ', roman: 'de' },
+    { hiragana: 'ど', katakana: 'ド', roman: 'do' }
+  ],
+  [
+    { hiragana: 'ば', katakana: 'バ', roman: 'ba' },
+    { hiragana: 'び', katakana: 'ビ', roman: 'bi' },
+    { hiragana: 'ぶ', katakana: 'ブ', roman: 'bu' },
+    { hiragana: 'べ', katakana: 'ベ', roman: 'be' },
+    { hiragana: 'ぼ', katakana: 'ボ', roman: 'bo' }
+  ]
+];
+
+const budao = [
+  [
+    { hiragana: 'ぱ', katakana: 'パ', roman: 'pa' },
+    { hiragana: 'ぴ', katakana: 'ピ', roman: 'pi' },
+    { hiragana: 'ぷ', katakana: 'プ', roman: 'pu' },
+    { hiragana: 'ぺ', katakana: 'ペ', roman: 'pe' },
+    { hiragana: 'ぽ', katakana: 'ポ', roman: 'po' }
+  ]
+];
+
+const ao = [
+  [
+    { hiragana: 'きゃ', katakana: 'キャ', roman: 'kya' },
+    { hiragana: 'きゅ', katakana: 'キュ', roman: 'kyu' },
+    { hiragana: 'きょ', katakana: 'キョ', roman: 'kyo' }
+  ],
+  [
+    { hiragana: 'しゃ', katakana: 'シャ', roman: 'sha' },
+    { hiragana: 'しゅ', katakana: 'シュ', roman: 'shu' },
+    { hiragana: 'しょ', katakana: 'ショ', roman: 'sho' }
+  ],
+  [
+    { hiragana: 'ちゃ', katakana: 'チャ', roman: 'cha' },
+    { hiragana: 'ちゅ', katakana: 'チュ', roman: 'chu' },
+    { hiragana: 'ちょ', katakana: 'チョ', roman: 'cho' }
+  ],
+  [
+    { hiragana: 'にゃ', katakana: 'ニャ', roman: 'nya' },
+    { hiragana: 'にゅ', katakana: 'ニュ', roman: 'nyu' },
+    { hiragana: 'にょ', katakana: 'ニョ', roman: 'nyo' }
+  ],
+  [
+    { hiragana: 'ひゃ', katakana: 'ヒャ', roman: 'hya' },
+    { hiragana: 'ひゅ', katakana: 'ヒュ', roman: 'hyu' },
+    { hiragana: 'ひょ', katakana: 'ヒョ', roman: 'hyo' }
+  ],
+  [
+    { hiragana: 'みゃ', katakana: 'ミャ', roman: 'mya' },
+    { hiragana: 'みゅ', katakana: 'ミュ', roman: 'myu' },
+    { hiragana: 'みょ', katakana: 'ミョ', roman: 'myo' }
+  ],
+  [
+    { hiragana: 'りゃ', katakana: 'リャ', roman: 'rya' },
+    { hiragana: 'りゅ', katakana: 'リュ', roman: 'ryu' },
+    { hiragana: 'りょ', katakana: 'リョ', roman: 'ryo' }
+  ],
+  [
+    { hiragana: 'ぎゃ', katakana: 'ギャ', roman: 'gya' },
+    { hiragana: 'ぎゅ', katakana: 'ギュ', roman: 'gyu' },
+    { hiragana: 'ぎょ', katakana: 'ギョ', roman: 'gyo' }
+  ],
+  [
+    { hiragana: 'じゃ', katakana: 'ジャ', roman: 'ja' },
+    { hiragana: 'じゅ', katakana: 'ジュ', roman: 'ju' },
+    { hiragana: 'じょ', katakana: 'ジョ', roman: 'jo' }
+  ],
+  [
+    { hiragana: 'びゃ', katakana: 'ビャ', roman: 'bya' },
+    { hiragana: 'びゅ', katakana: 'ビュ', roman: 'byu' },
+    { hiragana: 'びょ', katakana: 'ビョ', roman: 'byo' }
+  ],
+  [
+    { hiragana: 'ぴゃ', katakana: 'ピャ', roman: 'pya' },
+    { hiragana: 'ぴゅ', katakana: 'ピュ', roman: 'pyu' },
+    { hiragana: 'ぴょ', katakana: 'ピョ', roman: 'pyo' }
+  ]
+];
+---
+
+<BaseLayout>
+  <div class="content-container">
+    <div>
+      <h2>清音</h2>
+      <SyllabaryTable rows={seion} />
+    </div>
+    <div>
+      <h2>浊音</h2>
+      <SyllabaryTable rows={zhuoyin} />
+      <h2>半浊音</h2>
+      <SyllabaryTable rows={budao} />
+    </div>
+    <div>
+      <h2>拗音</h2>
+      <SyllabaryTable rows={ao} />
+    </div>
+  </div>
+  <div>
+    <h2>简介</h2>
+    <div>
+      <h3>清音</h3>
+      <p>
+        发音时声带不振动，声音清晰清脆。在日语五十音图中，清音是数量最多的音节。
+      </p>
+    </div>
+    <div>
+      <h3>浊音</h3>
+      <p>
+        发音时声带颤动，声音带有混浊的感觉。浊音是通过在清音的基础上加上浊音符号“〝”或“。”来表示的。
+      </p>
+    </div>
+    <div>
+      <h3>半浊音</h3>
+      <p>
+        半浊音的发音介于清音和浊音之间，只有一行，5个假名，即：ぱ、ぴ、ぷ、ぺ、ぽ。它们的辅音实际上是清音p。
+      </p>
+    </div>
+    <div>
+      <h3>拗音</h3>
+      <p>
+        拗音是指「い」段假名（含浊音、半浊音）（除い外）和复元音「や」「ゆ」「よ」拼起来的音节。拗音的出现是因为古代的日本人需要新的音去表达来自中国的发音，大部分的拗音词汇都是汉语词汇。
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+<style>
+  .content-container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+  }
+</style>

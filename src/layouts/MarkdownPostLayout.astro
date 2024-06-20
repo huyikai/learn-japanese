@@ -1,0 +1,69 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { fade } from 'astro:transitions';
+import Tag from '@components/Tag.astro';
+import TagItem from '@components/TagItem.astro';
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <p transition:animate={fade({ duration: '1s' })}>
+    <em>{frontmatter.description}</em>
+  </p>
+  {
+    frontmatter.pubDate && (
+      <p class="date">{frontmatter.pubDate.toString().slice(0, 10)}</p>
+    )
+  }
+  <p class="author">
+    Author: <a href="/about/"><em>{frontmatter.author}</em></a>
+  </p>
+
+  {
+    frontmatter.image && (
+      <img
+        src={frontmatter.image.url}
+        width="300"
+        alt={frontmatter.image.alt}
+      />
+    )
+  }
+
+  {
+    frontmatter.tags && (
+      <Tag>
+        {frontmatter.tags.map((tag: any) => (
+          <TagItem
+            title={tag}
+            url={`/tags/${tag}`}
+          />
+        ))}
+      </Tag>
+    )
+  }
+  <slot />
+</BaseLayout>
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  .tag {
+    border-radius: 0.2em;
+    padding: 0.2em 0.5em;
+    font-size: 0.8em;
+    background-color: var(--primary);
+  }
+  html.dark .tag {
+    background-color: var(--primary);
+  }
+
+  .tag a {
+    color: #fff;
+    text-decoration: none;
+  }
+  html.dark .tag a {
+    color: #fff;
+  }
+</style>

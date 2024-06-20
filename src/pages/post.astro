@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostComponent from '@components/Post.astro';
+const allPosts = await getCollection('post');
+const pageTitle = 'My post';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>Share some work life accumulation</p>
+  <ul>
+    {
+      allPosts.map((item: any) => (
+        <PostComponent
+          url={`/post/${item.slug}/`}
+          title={item.data.title}
+        />
+      ))
+    }
+  </ul>
+</BaseLayout>

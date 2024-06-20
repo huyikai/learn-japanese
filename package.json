@@ -1,0 +1,27 @@
+{
+  "name": "huyikai-site",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "commit": "git-cz"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/rss": "^4.0.5",
+    "astro": "^4.5.12",
+    "astro-expressive-code": "^0.34.1",
+    "astro-icon": "^1.1.0",
+    "typescript": "^5.4.3"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.1.66",
+    "@iconify-json/ic": "^1.1.17",
+    "git-cz": "^4.9.0",
+    "sharp": "^0.33.3"
+  }
+}

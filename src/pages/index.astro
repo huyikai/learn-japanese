@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const pageTitle = 'Home';
+import { Image } from 'astro:assets';
+import avatar from '@assets/avatar.jpg';
+import { slide, fade } from 'astro:transitions';
+import TagItem from '@components/TagItem.astro';
+import Tag from '@components/Tag.astro';
+import Social from '@components/Social.astro';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="home">
+    <div
+      class="infomation"
+      transition:animate={fade({ duration: '1.6s' })}
+    >
+      <!-- <Image
+        transition:animate={slide({ duration: '0.8s' })}
+        class="avatar"
+        src={avatar}
+        alt="avatar"
+        width="120"
+        height="120"
+        loading={'eager'}
+      /> -->
+      <p class="name">こんにちは、私の名前は「huyikai」です。</p>
+      <p class="name">このサイトは私の日本語学習記録です。</p>
+      <Tag>
+        <!-- <TagItem title="Software Engineer" />
+        <TagItem title="Photographer" />
+        <TagItem title="Designer" /> -->
+      </Tag>
+      <!-- <Social /> -->
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .home {
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    .infomation {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 1rem;
+    }
+  }
+  .name {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 4.2rem;
+    color: #1a1a1a;
+    font-family:
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      'Noto Sans',
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Noto Color Emoji';
+    margin: 0;
+    text-align: center;
+  }
+  .avatar {
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import { fade } from 'astro:transitions';
+const { imgs } = Astro.props;
+---
+
+<div class="imgs">
+  {
+    imgs.map((item: any) => (
+      <div
+        class="img-container"
+        transition:animate={fade({ duration: '1s' })}
+      >
+        <Image
+          class="img"
+          src={item}
+          alt="animal"
+          loading="eager"
+        />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .imgs {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .img-container {
+    margin: 0.2rem;
+    width: calc(100% / 3 - 0.4rem);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #f0f0f0;
+  }
+  .img:hover {
+    transition: 0.5s ease-in-out all;
+    transform: scale(1.05);
+  }
+</style>

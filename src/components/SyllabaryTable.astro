@@ -1,0 +1,52 @@
+---
+// Props 定义
+interface RowData {
+  hiragana: string;
+  katakana: string;
+  roman: string;
+}
+
+interface Props {
+  rows: (RowData | null)[][];
+}
+
+const { rows } = Astro.props as Props;
+---
+
+<table>
+  {
+    rows.map((row) => (
+      <tr>
+        {row.map((cell) => (
+          <td>
+            {cell ? (
+              <>
+                <div class="hiragana">{cell.hiragana}</div>
+                <div class="katakana">{cell.katakana}</div>
+                <div class="roman">{cell.roman}</div>
+              </>
+            ) : null}
+          </td>
+        ))}
+      </tr>
+    ))
+  }
+</table>
+<style>
+  td {
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+  }
+  .hiragana,
+  .katakana {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  .roman {
+    font-size: 1rem;
+    color: #999;
+    text-align: center;
+  }
+</style>

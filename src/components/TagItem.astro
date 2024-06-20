@@ -1,0 +1,34 @@
+---
+import { slide } from 'astro:transitions';
+const { title, url } = Astro.props;
+---
+
+{
+  url ? (
+    <a
+      class="tag"
+      href={url}
+      transition:animate={slide({ duration: '0.64s' })}
+    >
+      {title}
+    </a>
+  ) : (
+    <div class="tag">{title}</div>
+  )
+}
+
+<style>
+  .tag {
+    /* border-radius: 0.2em; */
+    padding: 0.2em 0.6em;
+    font-size: 0.8em;
+    background-color: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    user-select: none;
+  }
+  html.dark .tag {
+    background-color: var(--primary);
+    color: #fff;
+  }
+</style>

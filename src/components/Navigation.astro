@@ -1,0 +1,85 @@
+---
+const { pathname } = Astro.url;
+import { fade } from 'astro:transitions';
+// 定义一个辅助函数来判断是否应该添加 'active' 类
+function isActive(href: string) {
+  // 对于根路径特殊处理，确保只有当确实在首页时才激活
+  if (href === '/' && pathname === '/') return true;
+  // 对于非根路径，如果当前路径以给定的 href 开头，则认为是激活状态
+  return href !== '/' && pathname.startsWith(href);
+}
+
+// 导航项数据，可以根据需要添加更多
+const navItems = [
+  { href: '/', text: 'ホーム' },
+  { href: '/syllabary', text: '五十音' },
+  // { href: '/about/', text: 'About' },
+  // { href: '/album/', text: 'Album' },
+  // { href: '/post/', text: 'Post' },
+  // { href: '/stack/', text: 'Stack' },
+  // { href: '/project/', text: 'Project' }
+];
+---
+
+<div class="nav-links">
+  {
+    navItems.map((item) => (
+      <a
+        transition:animate={fade({ duration: '0.1s' })}
+        href={item.href}
+        title={item.text}
+        class={isActive(item.href) ? 'active' : ''}
+      >
+        {item.text}
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .nav-links {
+    display: none;
+  }
+
+  @media screen and (min-width: 636px) {
+    .nav-links {
+      height: 50px;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      position: static;
+      background: none;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #333;
+      text-transform: uppercase;
+    }
+    html.dark .nav-links a {
+      color: #ddd;
+    }
+    .nav-links .active {
+      font-weight: bold;
+      font-size: 1.4rem;
+      position: relative;
+    }
+
+    .nav-links .active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 50%;
+      height: 5px;
+      background-color: var(--primary);
+      z-index: -1;
+    }
+  }
+</style>

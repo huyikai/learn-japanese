@@ -1,0 +1,28 @@
+---
+import Social from '@components/Social.astro';
+import { Image } from 'astro:assets';
+---
+
+<style>
+  footer {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+</style>
+<footer>
+  <div style="display: flex; gap: 1rem; align-items: center;">
+    <Image
+      src="https://astro.badg.es/v2/built-with-astro/tiny.svg"
+      alt="Built with Astro"
+      inferSize
+      style="display: block;"
+      loading="eager"
+    />
+    <p style="font-size: 0.8rem;white-space: nowrap;">© 2024 huyikai</p>
+    <!-- <Social /> -->
+  </div>
+</footer>

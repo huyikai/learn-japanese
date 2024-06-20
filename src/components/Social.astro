@@ -1,0 +1,75 @@
+---
+import { Icon } from 'astro-icon/components';
+const size = 22;
+const socialList = [
+  {
+    name: 'github',
+    link: 'https://www.github.com/huyikai',
+    icon: 'mdi:github'
+  },
+  {
+    name: 'twitter',
+    link: 'https://www.twitter.com/hyk_tiger',
+    icon: 'mdi:twitter'
+  },
+  {
+    name: 'email',
+    link: 'hyk_tiger@foxmail.com',
+    icon: 'mdi:email'
+  },
+  {
+    name: 'discord',
+    link: 'hyk_tiger',
+    icon: 'ic:baseline-discord'
+  },
+  {
+    name: 'wechat',
+    link: 'huyikai',
+    icon: 'mdi:wechat'
+  }
+];
+---
+
+<div class="social-list">
+  {
+    socialList.map((item) =>
+      item.link.includes('https') ? (
+        <a
+          class="item"
+          href={item.link}
+          target="_blank"
+          title={item.name}
+        >
+          <Icon
+            title={item.name}
+            name={item.icon}
+            size={size}
+          />
+        </a>
+      ) : (
+        <div
+          aria-label={item.name}
+          class="item"
+          onclick={`navigator.clipboard.writeText('${item.link}').then(() => alert('copyed!')).catch(() => alert('Copying failed. Please copy manually.')); return false;`}
+        >
+          <Icon
+            title={item.name}
+            name={item.icon}
+            size={size}
+          />
+        </div>
+      )
+    )
+  }
+</div>
+
+<style>
+  .social-list {
+    display: flex;
+    gap: 10px;
+    .item {
+      cursor: pointer;
+      display: block;
+    }
+  }
+</style>

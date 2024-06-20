@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TagItem from '@components/TagItem.astro';
+const allStacks = await getCollection('stack');
+const category = [
+  ...new Set(allStacks.map((post) => post.slug.split('/')[0]).flat())
+];
+const pageTitle = 'category';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="tags">
+    {
+      category.map((cate) => (
+        <TagItem
+          title={cate}
+          url={`/stack/category/${cate}`}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

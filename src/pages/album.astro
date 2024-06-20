@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Imgs from '@components/Imgs.astro';
+const pageTitle = 'My Album';
+
+import animal1 from '@assets/album/animal1.jpg';
+import turtle from '@assets/album/turtle.jpg';
+import bird2 from '@assets/album/bird2.jpg';
+import scenery1 from '@assets/album/scenery1.jpg';
+import scenery2 from '@assets/album/scenery2.jpg';
+import harbor from '@assets/album/harbor.jpg';
+
+const animal = [animal1, turtle, bird2];
+const scenery = [scenery1, scenery2, harbor];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>Show some personal photography</p>
+  <h2>Device</h2>
+  <ul>
+    <li>Sony A7M3</li>
+    <li>Sony FE 35mm F1.4 GM / FE 55mm F1.8 Za / FE 24-105mm F4 G OSS</li>
+    <li>DJI Mavic / Ronin / Pocket</li>
+  </ul>
+
+  <p>
+    Tips: The following pictures are already for sale, please do not use them
+    for commercial purposes to avoid unnecessary copyright issues.
+  </p>
+
+  <h2>Animal</h2>
+  <Imgs imgs={animal} />
+
+  <h2>Scenery</h2>
+  <Imgs imgs={scenery} />
+</BaseLayout>

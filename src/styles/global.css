@@ -1,0 +1,109 @@
+:root {
+  --primary: #ebb761;
+  --background: #f1f5f9;
+  --background-dark: #0d1116;
+  --family: sans-serif;
+  --color: #2a2a2a;
+  --color-dark: #f5f5f5;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+html {
+  background-color: var(--background);
+  font-family: var(--family);
+  color: var(--color);
+}
+
+body {
+  margin: 0 auto;
+  width: 100%;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+a {
+  color: var(--primary);
+  /* text-decoration: none; */
+}
+html.dark a {
+  color: var(--primary);
+}
+
+[data-icon] {
+  color: var(--color);
+  fill: var(--color);
+}
+html.dark [data-icon] {
+  color: var(--color-dark);
+  fill: var(--color-dark);
+}
+
+.author a {
+  color: #333;
+}
+html.dark .author a {
+  color: #fff;
+}
+
+/* 导航样式 */
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: var(--primary);
+}
+
+.expanded {
+  display: unset;
+}
+
+.headerNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 636px) {
+  .headerNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+html.dark {
+  background-color: var(--background-dark);
+  color: var(--color-dark);
+}
+
+footer a {
+  color: #3d3d3d;
+}
+.dark footer a {
+  color: #fff;
+}
