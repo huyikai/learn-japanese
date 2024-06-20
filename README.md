@@ -1,3 +1,4 @@
-# [huyikai.xyz](https://huyikai.xyz)
+# 日本語学習記録
 
-我的个人网站。[![Built with Astro](https://astro.badg.es/v1/built-with-astro/tiny.svg)](https://astro.build)
+こんにちは、私の名前は「huyikai」です。
+このサイトは私の日本語学習記録です。
