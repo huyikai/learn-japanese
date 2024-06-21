@@ -15,9 +15,6 @@ const { frontmatter } = Astro.props;
       <p class="date">{frontmatter.pubDate.toString().slice(0, 10)}</p>
     )
   }
-  <p class="author">
-    Author: <a href="/about/"><em>{frontmatter.author}</em></a>
-  </p>
 
   {
     frontmatter.image && (

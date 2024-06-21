@@ -107,3 +107,8 @@ footer a {
 .dark footer a {
   color: #fff;
 }
+
+.roman {
+  font-size: 16px;
+  color: #999;
+}
