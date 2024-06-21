@@ -5,7 +5,7 @@ import icon from 'astro-icon';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://huyikai.github.io',
-  base: '/learn-japanese',
+  base: '/learn-japanese/',
   integrations: [
     astroExpressiveCode({
       themes: ['material-theme-darker'],

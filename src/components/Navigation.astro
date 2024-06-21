@@ -4,15 +4,15 @@ import { fade } from 'astro:transitions';
 // 定义一个辅助函数来判断是否应该添加 'active' 类
 function isActive(href: string) {
   // 对于根路径特殊处理，确保只有当确实在首页时才激活
-  if (href === '/' && pathname === '/') return true;
+  if (href === '' && pathname === baseUrl) return true;
   // 对于非根路径，如果当前路径以给定的 href 开头，则认为是激活状态
-  return href !== '/' && pathname.startsWith(href);
+  return href !== '' && pathname.replace(baseUrl, '').startsWith(href);
 }
-
+const baseUrl = import.meta.env.BASE_URL;
 // 导航项数据，可以根据需要添加更多
 const navItems = [
-  { href: '/', text: 'ホーム' },
-  { href: '/syllabary', text: '五十音' },
+  { href: '', text: 'ホーム' },
+  { href: 'syllabary', text: '五十音' }
   // { href: '/about/', text: 'About' },
   // { href: '/album/', text: 'Album' },
   // { href: '/post/', text: 'Post' },
@@ -20,13 +20,12 @@ const navItems = [
   // { href: '/project/', text: 'Project' }
 ];
 ---
-
 <div class="nav-links">
   {
     navItems.map((item) => (
       <a
         transition:animate={fade({ duration: '0.1s' })}
-        href={item.href}
+        href={baseUrl + item.href}
         title={item.text}
         class={isActive(item.href) ? 'active' : ''}
       >
