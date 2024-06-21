@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const pageTitle = 'に質問';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h2>日本語の勉強の過程で知りたい問題や疑問の問題</h2>
+  <p class="question">私の日文名は何ですか？</p>
+  <p class="roman">Watashi no nihonmei wa nan desu ka?</p>
+  <p class="answer">私の日文名は「」です。</p>
+</BaseLayout>
+<style>
+  .question {
+    font-size: 20px;
+  }
+  .roman {
+    font-size: 16px;
+    color: #999;
+  }
+</style>
