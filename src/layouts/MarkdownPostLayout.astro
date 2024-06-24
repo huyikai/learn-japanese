@@ -43,7 +43,7 @@ const { frontmatter } = Astro.props;
   {
     frontmatter.description && (
       <p transition:animate={slide({ duration: '1s' })}>
-        <strong>描述：</strong>
+        <strong>释义：</strong>
         {frontmatter.description}
       </p>
     )
