@@ -16,16 +16,24 @@ const { frontmatter } = Astro.props;
     )
   }
   {
-    frontmatter.tone && (
-      <p transition:animate={slide({ duration: '1s' })}>
+    frontmatter.pronunciation && (
+      <p transition:animate={slide({ duration: '0.9s' })}>
         <strong>发音：</strong>
+        {frontmatter.pronunciation}
+      </p>
+    )
+  }
+  {
+    frontmatter.tone && (
+      <p transition:animate={slide({ duration: '0.9s' })}>
+        <strong>音调：</strong>
         {frontmatter.tone}
       </p>
     )
   }
   {
     frontmatter.type && (
-      <p transition:animate={slide({ duration: '1.3s' })}>
+      <p transition:animate={slide({ duration: '1.2s' })}>
         <strong>类型：</strong>
         {frontmatter.type}
       </p>
@@ -34,9 +42,21 @@ const { frontmatter } = Astro.props;
 
   {
     frontmatter.description && (
-      <p transition:animate={slide({ duration: '1.5s' })}>
+      <p transition:animate={slide({ duration: '1.4s' })}>
         <strong>描述：</strong>
         {frontmatter.description}
+      </p>
+    )
+  }
+  {
+    frontmatter.example && (
+      <p transition:animate={slide({ duration: '1.5s' })}>
+        <strong>例句：</strong>
+        <div transition:animate={slide({ duration: '1.55s' })}>
+        {frontmatter.example.map((example: any) => (
+          <p style="margin-left: 2.8em;">{example}</p>
+        ))}
+        </div>
       </p>
     )
   }

@@ -2,11 +2,13 @@
 import { defineCollection, z } from 'astro:content';
 // 为每一个集合定义一个 `type` 和 `schema`
 const wordSchema = z.object({
-  title: z.string(),
-  tags: z.array(z.string()).optional(),
-  kana: z.string(),
-  tone: z.string(),
-  type: z.string()
+  title: z.string(),// 标题
+  tags: z.array(z.string()).optional(),// 标签
+  kana: z.string(),// 假名
+  pronunciation: z.string(),// 音标
+  tone: z.string(),// 调音
+  type: z.string(),// 类型
+  example: z.string()// 例子
 });
 const wordCollection = defineCollection({
   type: 'content',
