@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import TagItem from '@components/TagItem.astro';
 import PostComponent from '@components/Post.astro';
 const pageTitle = '単語';
 const allWords = await getCollection('words');
@@ -8,70 +9,22 @@ const allWords = await getCollection('words');
 
 <BaseLayout pageTitle={pageTitle}>
   <h2>单词列表</h2>
-  <div>总数：{allWords.length}</div>
-  <ul>
+  <p>总数：{allWords.length}</p>
+  <div class="tags">
     {
-      allWords.map((item: any) => (
-        <PostComponent
-          url={`words/${item.slug}`}
+      allWords.map((item) => (
+        <TagItem
           title={item.data.title}
+          url={`words/${item.slug}`}
         />
       ))
     }
-  </ul>
-
-  <h2>音调类型</h2>
-  <ol>
-    <li>
-      <strong>平板型（へいばんがた）</strong
-      >：从第一个音节开始，音调一直保持不变。
-      <div>例如：</div>
-      <ul>
-        <li>はし（橋）：音调为「はし」。</li>
-        <li>いぬ（犬）：音调为「いぬ」。</li>
-      </ul>
-    </li>
-    <li>
-      <strong>头高型（あたまがた）</strong
-      >：第一个音节的音调高，后续音节的音调降低。
-      <div>例如：</div>
-      <ul>
-        <li>はし（箸）：音调为「はし」。</li>
-        <li>さくら（桜）：音调为「さくら」。</li>
-      </ul>
-    </li>
-    <li>
-      <strong>中高型（なかがた）</strong
-      >：从第二个或更靠后的音节开始变高，然后在某个音节之后再次降低。
-      <div>例如：</div>
-      <ul>
-        <li>あたま（頭）：音调为「あたま」。</li>
-        <li>たべもの（食べ物）：音调为「たべもの」。</li>
-      </ul>
-    </li>
-    <li>
-      <strong>尾高型（おびかた）</strong
-      >：最后一个音节之前音调逐渐升高，最后一个音节音调最高。
-      <div>例如：</div>
-      <ul>
-        <li>うた（歌）：音调为「うた」。</li>
-        <li>しんぶん（新聞）：音调为「しんぶん」。</li>
-      </ul>
-    </li>
-    <li>
-      <strong>尾高型变种（おびかたのへんしゅう）</strong
-      >：这种类型是指音调在最后一个音节之前逐渐升高，最后一个音节音调最高，但在句末或后续接续时会降低。
-      <div>例如：</div>
-      <ul>
-        <li>
-          はなし（話）：音调为「はなし」，但在句子中如果后面接续其他词或助词时，音调会降低。
-        </li>
-        <li>ことば（言葉）：音调为「ことば」，同样在句末音调可能会降低。</li>
-      </ul>
-    </li>
-  </ol>
-  <p>
-    这五种音调类型在实际使用中可能会有细微的变化，具体音调取决于单词在句子中的位置和作用。对于学习者来说，最好的方法是通过大量的听力练习来掌握这些音调的变化。
-  </p>
+  </div>
 </BaseLayout>
-<style></style>
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>
