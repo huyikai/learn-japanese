@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import TagItem from '@components/TagItem.astro';
 import PostComponent from '@components/Post.astro';
 const pageTitle = '単語';
 const allWords = await getCollection('words');
@@ -9,22 +8,16 @@ const allWords = await getCollection('words');
 
 <BaseLayout pageTitle={pageTitle}>
   <h2>单词列表</h2>
-  <p>总数：{allWords.length}</p>
-  <div class="tags">
+  <div>总数：{allWords.length}</div>
+  <ul>
     {
-      allWords.map((item) => (
-        <TagItem
-          title={item.data.title}
+      allWords.map((item: any) => (
+        <PostComponent
           url={`words/${item.slug}`}
+          title={item.data.title}
         />
       ))
     }
-  </div>
+  </ul>
 </BaseLayout>
-<style>
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-</style>
+<style></style>
