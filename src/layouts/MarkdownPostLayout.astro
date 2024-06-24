@@ -1,28 +1,43 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { fade } from 'astro:transitions';
+import { slide } from 'astro:transitions';
 import Tag from '@components/Tag.astro';
 import TagItem from '@components/TagItem.astro';
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <p transition:animate={fade({ duration: '1s' })}>
-    <em>{frontmatter.description}</em>
-  </p>
   {
-    frontmatter.pubDate && (
-      <p class="date">{frontmatter.pubDate.toString().slice(0, 10)}</p>
+    frontmatter.kana && (
+      <p transition:animate={slide({ duration: '0.6s' })}>
+        <strong>假名：</strong>
+        {frontmatter.kana}
+      </p>
+    )
+  }
+  {
+    frontmatter.tone && (
+      <p transition:animate={slide({ duration: '1s' })}>
+        <strong>发音：</strong>
+        {frontmatter.tone}
+      </p>
+    )
+  }
+  {
+    frontmatter.type && (
+      <p transition:animate={slide({ duration: '1.3s' })}>
+        <strong>类型：</strong>
+        {frontmatter.type}
+      </p>
     )
   }
 
   {
-    frontmatter.image && (
-      <img
-        src={frontmatter.image.url}
-        width="300"
-        alt={frontmatter.image.alt}
-      />
+    frontmatter.description && (
+      <p transition:animate={slide({ duration: '1.5s' })}>
+        <strong>描述：</strong>
+        {frontmatter.description}
+      </p>
     )
   }
 
