@@ -33,6 +33,7 @@ const dates = generateDateRange('2024-06-21', '2024-08-31');
           {
             allWords.filter(
               (item) =>
+                item.data.pubDate &&
                 new Date(item.data.pubDate).toISOString().split('T')[0] === date
             ).length
           }
@@ -41,6 +42,7 @@ const dates = generateDateRange('2024-06-21', '2024-08-31');
           {allWords
             .filter(
               (item) =>
+                item.data.pubDate &&
                 new Date(item.data.pubDate).toISOString().split('T')[0] === date
             )
             .map((item, index) => (

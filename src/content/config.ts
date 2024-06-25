@@ -4,7 +4,7 @@ import { defineCollection, z } from 'astro:content';
 const wordSchema = z.object({
   title: z.string(), // 标题
   description: z.string(), // 释义
-  pubDate: z.date(), // 日期
+  pubDate: z.date().optional(), // 日期
   tags: z.array(z.string()).optional(), // 标签
   kana: z.string(), // 假名
   pronunciation: z.string(), // 音标
