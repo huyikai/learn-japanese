@@ -9,7 +9,7 @@ const wordSchema = z.object({
   pronunciation: z.string(), // 音标
   tone: z.string(), // 调音
   type: z.string(), // 类型
-  example: z.string() // 例子
+  example: z.array(z.string()).optional() // 例子
 });
 const wordCollection = defineCollection({
   type: 'content',
@@ -18,5 +18,5 @@ const wordCollection = defineCollection({
 
 // 导出一个单独的 `collections` 对象来注册你的集合
 export const collections = {
-  word: wordCollection
+  words: wordCollection
 };
