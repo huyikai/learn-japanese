@@ -4,6 +4,7 @@ import { slide } from 'astro:transitions';
 import Tag from '@components/Tag.astro';
 import TagItem from '@components/TagItem.astro';
 const { frontmatter } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -23,14 +24,14 @@ const { frontmatter } = Astro.props;
       </p>
     )
   }
-  <!-- {
+  {
     frontmatter.tone && (
       <p transition:animate={slide({ duration: '0.7s' })}>
         <strong>音调：</strong>
-        {frontmatter.tone}
+        <a href={`${baseUrl}/tone`}>{frontmatter.tone}</a>
       </p>
     )
-  } -->
+  }
   {
     frontmatter.type && (
       <p transition:animate={slide({ duration: '0.9s' })}>
