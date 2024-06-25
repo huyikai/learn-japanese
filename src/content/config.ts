@@ -17,7 +17,19 @@ const wordCollection = defineCollection({
   schema: wordSchema
 });
 
+const grammarSchema = z.object({
+  title: z.string(), // 标题
+  description: z.string(), // 释义
+  pubDate: z.date().optional(), // 日期
+  example: z.array(z.string()).optional() // 例子
+});
+const grammarCollection = defineCollection({
+  type: 'content',
+  schema: grammarSchema
+});
+
 // 导出一个单独的 `collections` 对象来注册你的集合
 export const collections = {
-  words: wordCollection
+  words: wordCollection,
+  grammars: grammarCollection
 };
