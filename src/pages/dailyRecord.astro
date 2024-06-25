@@ -8,6 +8,12 @@ const allWords = (await getCollection('words')).sort((a, b) => {
   return dateA - dateB;
 });
 
+const allGrammars = (await getCollection('grammars')).sort((a, b) => {
+  const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
+  const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
+  return dateA - dateB;
+});
+
 const generateDateRange = (start: string, end: string) => {
   const startDate = new Date(start);
   const endDate = new Date(end);
@@ -28,8 +34,9 @@ const dates = generateDateRange('2024-06-21', '2024-08-31');
   {
     dates.map((date) => (
       <>
-        <h3>
-          日付：{date}&nbsp;&nbsp;&nbsp;&nbsp;数量:
+        <h2>日付：{date}</h2>
+        <p>
+          単語:
           {
             allWords.filter(
               (item) =>
@@ -37,7 +44,7 @@ const dates = generateDateRange('2024-06-21', '2024-08-31');
                 new Date(item.data.pubDate).toISOString().split('T')[0] === date
             ).length
           }
-        </h3>
+        </p>
         <div class="tags">
           {allWords
             .filter(
@@ -50,6 +57,33 @@ const dates = generateDateRange('2024-06-21', '2024-08-31');
                 <TagItem
                   title={item.data.title}
                   url={`words/${item.slug}`}
+                />
+              </div>
+            ))}
+        </div>
+        <p>
+          文法:
+          {
+            allGrammars.filter(
+              (item) =>
+                item.data.pubDate &&
+                new Date(item.data.pubDate).toISOString().split('T')[0] === date
+            ).length
+          }
+        </p>
+
+        <div class="tags">
+          {allGrammars
+            .filter(
+              (item) =>
+                item.data.pubDate &&
+                new Date(item.data.pubDate).toISOString().split('T')[0] === date
+            )
+            .map((item, index) => (
+              <div {...{ key: index }}>
+                <TagItem
+                  title={item.data.title}
+                  url={`grammars/${item.slug}`}
                 />
               </div>
             ))}

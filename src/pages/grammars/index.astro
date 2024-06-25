@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TagItem from '@components/TagItem.astro';
+const allGrammars = (await getCollection('grammars')).sort((a, b) => {
+  const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
+  const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
+  return dateA - dateB;
+});
+---
+
+<BaseLayout>
+  <h2>文法</h2>
+  <p>合計数：{allGrammars.length}</p>
+  <div class="tags">
+    {
+      allGrammars.map((item) => (
+        <TagItem
+          title={item.data.title}
+          url={`grammars/${item.slug}`}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>
