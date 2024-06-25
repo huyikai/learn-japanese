@@ -1,9 +1,49 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import TagItem from '@components/TagItem.astro';
 const pageTitle = '日次レコード';
+const allWords = (await getCollection('words')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const dates = [
+  '2024-06-21',
+  '2024-06-22',
+  '2024-06-23',
+  '2024-06-24',
+  '2024-06-25',
+  '2024-06-26',
+  '2024-06-27',
+  '2024-06-28',
+  '2024-06-29',
+  '2024-06-30'
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <h2>日次レコード</h2>
+  {
+    dates.map((date, dateIndex) => (
+      <>
+        <h3>{date}</h3>
+        <div class="tags">
+          {allWords
+            .slice(dateIndex * 10, (dateIndex + 1) * 10)
+            .map((item, index) => (
+              <div {...{ key: index }}>
+                <TagItem
+                  title={item.data.title}
+                  url={`words/${item.slug}`}
+                />
+              </div>
+            ))}
+        </div>
+      </>
+    ))
+  }
 </BaseLayout>
-<style></style>
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

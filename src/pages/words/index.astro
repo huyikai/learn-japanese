@@ -1,15 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import PostComponent from '@components/Post.astro';
 import TagItem from '@components/TagItem.astro';
 const pageTitle = '単語';
-const allWords = await getCollection('words');
+const allWords = (await getCollection('words')).sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>单词列表</h2>
-  <p>总数：{allWords.length}</p>
+  <h2>単語リスト</h2>
+  <p>合計数：{allWords.length}</p>
   <div class="tags">
     {
       allWords.map((item) => (
