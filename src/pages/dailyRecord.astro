@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import TagItem from '@components/TagItem.astro';
-const pageTitle = '日次レコード';
 const allWords = (await getCollection('words')).sort((a, b) => {
   const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
   const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
@@ -25,8 +24,7 @@ const generateDateRange = (start: string, end: string) => {
 const dates = generateDateRange('2024-06-21', '2024-08-31');
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <h2>日次レコード</h2>
+<BaseLayout>
   {
     dates.map((date) => (
       <>
