@@ -30,7 +30,7 @@ const { pageTitle } = Astro.props;
     <Header />
     <main style="width:100%;max-width: 80ch;margin: 0 auto;flex: 1;">
       {
-        pageTitle !== 'Home' && (
+        pageTitle !== 'ホーム' && (
           <h1 transition:animate={fade({ duration: '0.64s' })}>{pageTitle}</h1>
         )
       }
