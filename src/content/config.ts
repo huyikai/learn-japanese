@@ -3,6 +3,7 @@ import { defineCollection, z } from 'astro:content';
 // 为每一个集合定义一个 `type` 和 `schema`
 const wordSchema = z.object({
   title: z.string(), // 标题
+  description: z.string(), // 释义
   pubDate: z.date(), // 日期
   tags: z.array(z.string()).optional(), // 标签
   kana: z.string(), // 假名
