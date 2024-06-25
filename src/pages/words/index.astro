@@ -2,22 +2,29 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostComponent from '@components/Post.astro';
+import TagItem from '@components/TagItem.astro';
 const pageTitle = '単語';
 const allWords = await getCollection('words');
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <h2>单词列表</h2>
-  <div>总数：{allWords.length}</div>
-  <ul>
+  <p>总数：{allWords.length}</p>
+  <div class="tags">
     {
-      allWords.map((item: any) => (
-        <PostComponent
-          url={`words/${item.slug}`}
+      allWords.map((item) => (
+        <TagItem
           title={item.data.title}
+          url={`words/${item.slug}`}
         />
       ))
     }
-  </ul>
+  </div>
 </BaseLayout>
-<style></style>
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

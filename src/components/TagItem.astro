@@ -1,13 +1,14 @@
 ---
 import { slide } from 'astro:transitions';
 const { title, url } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 {
   url ? (
     <a
       class="tag"
-      href={url}
+      href={`${baseUrl}${url}`}
       transition:animate={slide({ duration: '0.64s' })}
     >
       {title}
