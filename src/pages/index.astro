@@ -26,12 +26,17 @@ import Tag from '@components/Tag.astro';
       /> -->
       <p class="name">ようこそ。</p>
       <p class="name">こんにちは、私の名前は「huyikai」です。</p>
-      <p class="name">このサイトは私の日本語勉強記録です。</p>
+      <p class="name">
+        このサイトは私の日本語<ruby>勉強<rt>べんきょう</rt></ruby><ruby>記録<rt>きろく</rt></ruby>です。
+      </p>
     </div>
   </div>
 </BaseLayout>
 
 <style>
+  ruby {
+    ruby-position: over; /* 注音显示在文字上方 */
+  }
   .home {
     height: 100%;
     display: flex;
