@@ -20,7 +20,7 @@ const wordCollection = defineCollection({
 
 const grammarSchema = z.object({
   title: z.string(), // 标题
-  description: z.string(), // 释义
+  description: z.array(z.string()).optional(), // 释义
   pubDate: z.date().optional(), // 日期
   example: z.array(z.string()).optional(), // 例子
   lessonIndex: z.number().optional() // 课时
