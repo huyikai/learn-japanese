@@ -1,5 +1,6 @@
 ---
 const { order, title, data } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 {
@@ -15,7 +16,7 @@ const { order, title, data } = Astro.props;
           {typeof item === 'string' ? (
             item
           ) : item.href ? (
-            <a href={item.href}>{item.text}</a>
+            <a href={`${baseUrl}${item.href}`}>{item.text}</a>
           ) : (
             item.text
           )}
@@ -29,7 +30,7 @@ const { order, title, data } = Astro.props;
           {typeof item === 'string' ? (
             item
           ) : item.href ? (
-            <a href={item.href}>{item.text}</a>
+            <a href={`${baseUrl}${item.href}`}>{item.text}</a>
           ) : (
             item.text
           )}
