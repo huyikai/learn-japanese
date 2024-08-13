@@ -1,0 +1,17 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import List from '@components/List.astro';
+const pageTitle = 'みんなの日本語';
+// 生成25课的数组
+const lessons = Array.from({ length: 25 }, (_, i) => ({
+  text: `第${i + 1}课`,
+  href: `japaneseForEveryone/${i + 1}`
+}));
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <List
+    title={false}
+    data={lessons}
+  />
+</BaseLayout>

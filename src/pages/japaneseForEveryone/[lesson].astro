@@ -1,0 +1,67 @@
+---
+import { sortByPubDate } from '@utils/sort';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TagItem from '@components/TagItem.astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const lessons = Array.from({ length: 25 }, (_, i) => ({
+    params: { lesson: `${i + 1}` }
+  }));
+  return lessons;
+}
+const { lesson } = Astro.params;
+const words = (
+  await getCollection(
+    'words',
+    (entry) => entry.data.lessonIndex === Number(lesson)
+  )
+).sort(sortByPubDate);
+const grammars = (
+  await getCollection(
+    'grammars',
+    (entry) => entry.data.lessonIndex === Number(lesson)
+  )
+).sort(sortByPubDate);
+---
+
+<BaseLayout pageTitle={`第${lesson}课`}>
+  <p>
+    単語:
+    {words.length}
+  </p>
+  <div class="tags">
+    {
+      words.map((item, index) => (
+        <div {...{ key: index }}>
+          <TagItem
+            title={item.data.title}
+            url={`words/${item.slug}`}
+          />
+        </div>
+      ))
+    }
+  </div>
+  <p>
+    文法:
+    {grammars.length}
+  </p>
+  <div class="tags">
+    {
+      grammars.map((item, index) => (
+        <div {...{ key: index }}>
+          <TagItem
+            title={item.data.title}
+            url={`grammars/${item.slug}`}
+          />
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>
