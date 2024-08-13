@@ -28,7 +28,12 @@ const baseUrl = import.meta.env.BASE_URL;
     frontmatter.tone && (
       <p transition:animate={slide({ duration: '0.7s' })}>
         <strong>音调：</strong>
-        <a href={`${baseUrl}/tone`}>{frontmatter.tone}</a>
+        <a
+          href={`${baseUrl}/tone`}
+          style="text-decoration: none;"
+        >
+          {frontmatter.tone}
+        </a>
       </p>
     )
   }

@@ -1,0 +1,42 @@
+---
+const { order, title, data } = Astro.props;
+---
+
+{
+  title !== false && title !== undefined ? (
+    <h5>{typeof title === 'string' ? title : '示例'}</h5>
+  ) : null
+}
+{
+  order ? (
+    <ol>
+      {data.map((item: string | { text: string; href?: string }) => (
+        <li>
+          {typeof item === 'string' ? (
+            item
+          ) : item.href ? (
+            <a href={item.href}>{item.text}</a>
+          ) : (
+            item.text
+          )}
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <ul>
+      {data.map((item: string | { text: string; href?: string }) => (
+        <li>
+          {typeof item === 'string' ? (
+            item
+          ) : item.href ? (
+            <a href={item.href}>{item.text}</a>
+          ) : (
+            item.text
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style></style>

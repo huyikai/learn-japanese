@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SyllabaryTable from '@components/SyllabaryTable.astro';
-import Example from '@components/Example.astro';
+import List from '@components/List.astro';
 const seion = [
   [
     { hiragana: 'あ', katakana: 'ア', roman: 'a' },
@@ -219,23 +219,23 @@ const ao = [
       (u), え (e), お
       (o)。长音通常通过在元音后面加上相同的元音或特定的字符来表示。
     </p>
-    <Example
+    <List
       title="あ段的长音：あ的长音通过加上あ来表示，例如："
       data={['おかあさん (okaasan) - 母亲', 'おばあさん (obaasan) - 祖母']}
     />
-    <Example
+    <List
       title="い段的长音：い的长音通过加上い来表示，例如："
       data={['おにいさん (oniisan) - 哥哥', 'にいがた (niigata) - 新潟']}
     />
-    <Example
+    <List
       title="う段的长音：う的长音通过加上う来表示，例如："
       data={['すうじ (suuji) - 数字', 'りゅうがく (ryuugaku) - 留学']}
     />
-    <Example
+    <List
       title="え段的长音：え的长音通过加上え来表示，但在现代日语中常用「い」来表示，例如："
       data={['せんせい (sensei) - 老师', 'けいえい (keiei) - 经营']}
     />
-    <Example
+    <List
       title="お段的长音：お的长音通过加上お来表示，但在现代日语中常用「う」来表示，例如："
       data={['とおい (tooi) - 远', 'こおり (koori) - 冰']}
     />
@@ -245,7 +245,7 @@ const ao = [
       促音是指在发音中突然停止并保持一段时间，通常用小つ (っ)
       来表示。促音后的音通常是一个清音（如か、た、ぱ行等）。
     </p>
-    <Example
+    <List
       title="促音的例子："
       data={[
         'がっこう (gakkou) - 学校',
@@ -253,7 +253,7 @@ const ao = [
         'さっか (sakka) - 作家'
       ]}
     />
-    <Example
+    <List
       title="注意：促音的位置不同会改变单词的意思，例如："
       data={['いと (ito) - 线', 'いっと (itto) - 目标']}
     />

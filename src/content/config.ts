@@ -8,9 +8,10 @@ const wordSchema = z.object({
   tags: z.array(z.string()).optional(), // 标签
   kana: z.string(), // 假名
   pronunciation: z.string(), // 音标
-  tone: z.string(), // 调音
-  type: z.string(), // 类型
-  example: z.array(z.string()).optional() // 例子
+  tone: z.string().optional(), // 调音
+  type: z.string().optional(), // 类型
+  example: z.array(z.string()).optional(), // 例子
+  lessonIndex: z.number().optional() // 课时
 });
 const wordCollection = defineCollection({
   type: 'content',
@@ -21,7 +22,8 @@ const grammarSchema = z.object({
   title: z.string(), // 标题
   description: z.string(), // 释义
   pubDate: z.date().optional(), // 日期
-  example: z.array(z.string()).optional() // 例子
+  example: z.array(z.string()).optional(), // 例子
+  lessonIndex: z.number().optional() // 课时
 });
 const grammarCollection = defineCollection({
   type: 'content',
