@@ -50,7 +50,15 @@ const baseUrl = import.meta.env.BASE_URL;
     frontmatter.description && (
       <p transition:animate={slide({ duration: '1s' })}>
         <strong>释义：</strong>
-        {frontmatter.description}
+        {typeof frontmatter.description === 'string' ? (
+          <p transition:animate={slide({ duration: '1s' })}>
+            {frontmatter.description}
+          </p>
+        ) : (
+          frontmatter.description.map((description: any, index: number) => (
+            <p transition:animate={slide({ duration: '1s' })}>{description}</p>
+          ))
+        )}
       </p>
     )
   }
