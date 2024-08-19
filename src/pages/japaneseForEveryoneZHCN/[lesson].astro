@@ -25,7 +25,7 @@ const grammars = (
 ---
 
 <BaseLayout pageTitle={`第${lesson}课`}>
-  <p><a href={`./../japaneseForEveryoneZHCN/${lesson}`}>Toggle中文</a></p>
+  <p><a href={`./../japaneseForEveryone/${lesson}`}>Toggle日本語</a></p>
   <p>
     単語:
     {words.length}
@@ -35,7 +35,7 @@ const grammars = (
       words.map((item, index) => (
         <div {...{ key: index }}>
           <TagItem
-            title={item.data.title}
+            title={item.data.description}
             url={`words/${item.slug}`}
           />
         </div>
@@ -51,7 +51,7 @@ const grammars = (
       grammars.map((item, index) => (
         <div {...{ key: index }}>
           <TagItem
-            title={item.data.title}
+            title={item.data.description}
             url={`grammars/${item.slug}`}
           />
         </div>
